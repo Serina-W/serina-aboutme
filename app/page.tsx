@@ -1,83 +1,186 @@
 import Image from "next/image";
 
-export default function Home() {
-    return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <Image
-                    className="dark:invert"
-                    src="/next.svg"
-                    alt="Next.js logo"
-                    width={180}
-                    height={38}
-                    priority
-                />
-                <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-                    <li className="mb-2">
-                        Get started by editing{" "}
-                        <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-                            app/page.tsx
-                        </code>
-                        .
-                    </li>
-                    <li>Save and see your changes instantly.</li>
-                </ol>
+const NAV = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Resume", id: "resume" },
+  { label: "Projects", id: "projects" },
+  { label: "Activities", id: "activities" },
+  { label: "Contact", id: "contact" },
+];
 
-                <div className="flex gap-4 items-center flex-col sm:flex-row">
-                    <a
-                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                        href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            className="dark:invert"
-                            src="/vercel.svg"
-                            alt="Vercel logomark"
-                            width={20}
-                            height={20}
-                        />
-                        Deploy now
-                    </a>
-                    <a
-                        className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-                        href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Read our docs
-                    </a>
-                </div>
-            </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+const SKILLS = [
+  { name: "MS SUITE", pct: 90 },
+  { name: "PYTHON", pct: 90 },
+  { name: "JS / TS / REACT", pct: 80 },
+  { name: "NODE / EXPRESS", pct: 75 },
+];
+
+export default function Page() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Fixed Top Nav */}
+      <header className="fixed inset-x-0 top-0 z-50">
+        <div className="bg-neutral-800/90 backdrop-blur">
+          <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-5">
+            <nav className="flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-[11px] font-semibold tracking-[0.42em] text-white/80">
+              {NAV.map((item) => (
                 <a
-                    className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                    href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={
+                    item.id === "about"
+                      ? "text-orange-400 hover:text-orange-300"
+                      : "hover:text-white"
+                  }
                 >
-                    <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-                    Learn
+                  {item.label.toUpperCase()}
                 </a>
-                <a
-                    className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                    href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-                    Examples
-                </a>
-                <a
-                    className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                    href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-                    Go to nextjs.org →
-                </a>
-            </footer>
+              ))}
+            </nav>
+          </div>
         </div>
-    );
+        <div className="h-px bg-white/25" />
+      </header>
+
+      {/* HERO */}
+      <section id="home" className="relative min-h-screen">
+        <div className="absolute inset-0">
+        <Image
+            src="/hero.jpg"
+            alt="Profile"
+            fill
+            className="object-cover"
+            priority
+        />
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
+
+        <div className="relative flex min-h-screen items-center justify-center px-4 pt-34">
+          <div className="text-center text-white">
+            <p className="text-xs font-semibold tracking-[0.32em] text-white/80">
+              HI THERE, THANKS FOR VISITING MY WEBSITE!
+            </p>
+
+            <h1 className="mt-10 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+              Serina Wang
+            </h1>
+
+            <p className="mt-6 text-base text-white/85 sm:text-lg">
+              Mathematics–Computer Science & Economics Student | Full-Stack Developer | Builder
+            </p>
+
+            <div className="mt-10 flex items-center justify-center gap-6 text-white/80">
+              {["GH", "IN", "GM",].map((t) => (
+                <div
+                  key={t}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-sm font-semibold"
+                >
+                  {t}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white/90">
+            ↓
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="bg-black text-white">
+        <div className="h-px bg-white/15" />
+
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <div className="text-center">
+            <p className="text-xs font-semibold tracking-[0.38em] text-orange-400">
+              ABOUT
+            </p>
+            <h2 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+              Let me introduce myself.
+            </h2>
+          </div>
+
+          <div className="mx-auto mt-14 grid max-w-4xl items-center gap-10 md:grid-cols-[180px_1fr]">
+            <div className="flex justify-center md:justify-start">
+              <div className="relative h-36 w-36 overflow-hidden rounded-full ring-2 ring-orange-500/70">
+                <Image
+                  src="/serinaprofilepic.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover object-[50%_15%]"
+                  priority
+                />
+              </div>
+            </div>
+
+            <p className="text-base leading-relaxed text-white/65">
+              I’m a Mathematics–Computer Science student at UC San Diego interested in
+              full-stack development, product engineering, and data-driven systems.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-12 lg:grid-cols-2">
+            {/* PROFILE */}
+            <div>
+              <h3 className="text-sm font-semibold tracking-[0.35em] text-white/85">
+                PROFILE
+              </h3>
+
+              <p className="mt-5 max-w-xl text-sm text-white/60">
+
+              </p>
+
+              <div className="mt-8 space-y-6 text-sm">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.22em] text-white/45">
+                    FULLNAME
+                  </p>
+                  <p className="mt-2 text-white/80">Serina Wang</p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.22em] text-white/45">
+                    EMAIL
+                  </p>
+                  <p className="mt-2 text-white/80">sew008@ucsd.edu</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PLACEHOLDER SECTIONS */}
+      <SectionShell id="resume" title="Resume" />
+      <SectionShell id="projects" title="Projects" />
+      <SectionShell id="activities" title="Activities" />
+      <SectionShell id="contact" title="Contact" />
+
+      <footer className="bg-black py-10 text-center text-xs text-white/45">
+        Edited by Serina Wang
+      </footer>
+    </div>
+  );
+}
+
+function SectionShell({ id, title }: { id: string; title: string }) {
+  return (
+    <section id={id} className="bg-black text-white">
+      <div className="mx-auto max-w-6xl px-4 py-20">
+        <p className="text-xs font-semibold tracking-[0.38em] text-orange-400">
+          {title.toUpperCase()}
+        </p>
+        <h2 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+          {title}
+        </h2>
+        <p className="mt-6 max-w-2xl text-sm text-white/60">
+          ...
+        </p>
+      </div>
+    </section>
+  );
 }
