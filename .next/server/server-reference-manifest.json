@@ -1,5 +1,28 @@
 {
-  "node": {},
+  "node": {
+    "00b59b67e32a03d1b4a1fe9e2b19521b97cce7d486": {
+      "workers": {
+        "app/api/demo/experience/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fserinawang%2Fserina-aboutme%2Fapp%2Fapi%2Fdemo%2Fexperience%2Froute.ts%22%2C%5B%5B%2200b59b67e32a03d1b4a1fe9e2b19521b97cce7d486%22%2C%22GET%22%5D%2C%5B%224051b03ce9e8ced181d54b8d80eb6e5231c89734a3%22%2C%22POST%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/demo/experience/route": "rsc"
+      }
+    },
+    "4051b03ce9e8ced181d54b8d80eb6e5231c89734a3": {
+      "workers": {
+        "app/api/demo/experience/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fserinawang%2Fserina-aboutme%2Fapp%2Fapi%2Fdemo%2Fexperience%2Froute.ts%22%2C%5B%5B%2200b59b67e32a03d1b4a1fe9e2b19521b97cce7d486%22%2C%22GET%22%5D%2C%5B%224051b03ce9e8ced181d54b8d80eb6e5231c89734a3%22%2C%22POST%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/demo/experience/route": "rsc"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "AUNP2EzAJBYtUGG+rsWtUYchmFyP4R+5/+fF1BUl6xw="
 }
