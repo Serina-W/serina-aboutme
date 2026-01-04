@@ -9,10 +9,12 @@ function parseDateOrNull(value: unknown) {
   return Number.isNaN(d.getTime()) ? null : d;
 }
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
   try {
     const experience = await prisma.experience.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!experience) {
@@ -25,7 +27,9 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
   }
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
   try {
     const body = await req.json();
 
@@ -45,20 +49,21 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     }
 
     const updated = await prisma.experience.update({
-      where: { id: params.id },
+      where: { id },
       data: { company, title, location, description, startDate, endDate },
     });
 
     return NextResponse.json({ status: "success", data: updated }, { status: 200 });
-  } catch (e: any) {
-    // If id doesn't exist, Prisma throws
+  } catch {
     return NextResponse.json({ status: "error", message: "Failed to update experience" }, { status: 500 });
   }
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
   try {
-    await prisma.experience.delete({ where: { id: params.id } });
+    await prisma.experience.delete({ where: { id } });
     return NextResponse.json({ status: "success", message: "Deleted" }, { status: 200 });
   } catch {
     return NextResponse.json({ status: "error", message: "Failed to delete experience" }, { status: 500 });

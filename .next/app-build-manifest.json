@@ -15,6 +15,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/demo/experience/route.js"
+    ],
+    "/api/demo/experience/[id]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/demo/experience/[id]/route.js"
+    ],
+    "/api/demo/project/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/demo/project/route.js"
+    ],
+    "/api/demo/project/[id]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/demo/project/[id]/route.js"
     ]
   }
 }
