@@ -1,13 +1,5 @@
 import Image from "next/image";
-
-const NAV = [
-  { label: "Home", id: "home" },
-  { label: "About", id: "about" },
-  { label: "Resume", id: "resume" },
-  { label: "Projects", id: "projects" },
-  { label: "Activities", id: "activities" },
-  { label: "Contact", id: "contact" },
-];
+import SiteNav from "@/components/SiteNav";
 
 const SKILLS = [
   { name: "MS SUITE", pct: 90 },
@@ -19,40 +11,19 @@ const SKILLS = [
 export default function Page() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Fixed Top Nav */}
-      <header className="fixed inset-x-0 top-0 z-50">
-        <div className="bg-neutral-800/90 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-5">
-            <nav className="flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-[11px] font-semibold tracking-[0.42em] text-white/80">
-              {NAV.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={
-                    item.id === "about"
-                      ? "text-orange-400 hover:text-orange-300"
-                      : "hover:text-white"
-                  }
-                >
-                  {item.label.toUpperCase()}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-        <div className="h-px bg-white/25" />
-      </header>
+      {/* Shared Navbar */}
+      <SiteNav active="home" />
 
       {/* HERO */}
       <section id="home" className="relative min-h-screen">
         <div className="absolute inset-0">
-        <Image
+          <Image
             src="/hero.jpg"
             alt="Profile"
             fill
             className="object-cover"
             priority
-        />
+          />
           <div className="absolute inset-0 bg-black/55" />
         </div>
 
@@ -71,7 +42,7 @@ export default function Page() {
             </p>
 
             <div className="mt-10 flex items-center justify-center gap-6 text-white/80">
-              {["GH", "IN", "GM",].map((t) => (
+              {["GH", "IN", "GM"].map((t) => (
                 <div
                   key={t}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-sm font-semibold"
@@ -130,9 +101,7 @@ export default function Page() {
                 PROFILE
               </h3>
 
-              <p className="mt-5 max-w-xl text-sm text-white/60">
-
-              </p>
+              <p className="mt-5 max-w-xl text-sm text-white/60"></p>
 
               <div className="mt-8 space-y-6 text-sm">
                 <div>
@@ -156,8 +125,11 @@ export default function Page() {
 
       {/* PLACEHOLDER SECTIONS */}
       <SectionShell id="resume" title="Resume" />
-      <SectionShell id="projects" title="Projects" />
-      <SectionShell id="activities" title="Activities" />
+
+      {/* Keep these removed since they are separate pages now */}
+      {/* <SectionShell id="projects" title="Projects" /> */}
+      {/* <SectionShell id="experiences" title="Experiences" /> */}
+
       <SectionShell id="contact" title="Contact" />
 
       <footer className="bg-black py-10 text-center text-xs text-white/45">
