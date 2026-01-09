@@ -1,0 +1,8 @@
+{
+  "/api/demo/experience/route": "app/api/demo/experience/route.js",
+  "/api/demo/experience/[id]/route": "app/api/demo/experience/[id]/route.js",
+  "/page": "app/page.js",
+  "/experience/page": "app/experience/page.js",
+  "/api/demo/experience/page": "app/api/demo/experience/page.js",
+  "/project/page": "app/project/page.js"
+}
